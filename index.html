@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Portfolio</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Ludovic Provost's Portfolio</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +50,8 @@
         <div id="lead-content">
             <h1>Ludovic Provost</h1>
             <h2>Computer Engineer</h2>
-            <!-- <a href="#" class="btn-rounded-white">Download Resume</a> -->
+            <a href="assets/CV_LudovicProvost.pdf" class="btn-rounded-white">Download French Resume</a>
+            <a href="assets/resume_LudovicProvost.pdf" class="btn-rounded-white">Download English Resume</a>
         </div>
         <!-- End #lead-content -->
 
@@ -83,37 +84,7 @@
     </div>
     End #about -->
 
-    <div id="experience" class="background-alt">
-        <h2 class="heading">Experience</h2>
-        <div id="experience-timeline">
-            <div data-date="May 2021 – November 2021">
-                <h3>Élections Québec</h3>
-                <h4>I.T. Technician</h4>
-                <p>
-                    As an I.T. Technician at Élections Québec, I excelled in repairing and maintaining computer hardware. My role involved delivering top-notch customer service through platforms such as Cisco Finesse, MS Teams, and Outlook. Utilizing tools like Azure Active Directory, Microsoft SCCM, and Octopus ITSM, I adeptly addressed user concerns and contributed to the efficient resolution of technical issues.                
-                </p>
-            </div>
-
-            <div data-date="May 2022 – August 2022">
-                <h3>Brookfield Renewable Partners L.P.</h3>
-                <h4>Application Support Intern</h4>
-                <p>
-                    Interning at Brookfield Renewable, I expertly handled user accounts for tools like D365 and MediusFlow, employing PL/SQL scripts for database recovery. This in-office role acclimated me to corporate workflows, enhancing both my technical and professional skills.
-                </p>
-            </div>
-
-            <div data-date="September 2022 - December 2022">
-                <h3>Intact Financial Corporation</h3>
-                <h4>CI/CD Software Developer Intern</h4>
-                <p>
-                    As a Software Developer Intern at Intact, I troubleshooted and resolved issues in pipelines, services, and the company's tools. Collaborating with senior team members, I automated processes using pipelines and Git, implemented job scheduling, automated testing, and developed a failure alert system. Notably, I migrated services from Log4j to Logback, optimized Github roles, and maintained thorough documentation in adherence to company standards.
-                </p>
-            </div>
-        </div>
-    </div>
-    <!-- End #experience -->
-
-    <div id="education">
+    <div id="education" class="background-alt">
         <h2 class="heading">Education</h2>
         <div class="education-block">
             <h3>University of Ottawa</h3>
@@ -137,10 +108,102 @@
     </div>
     <!-- End #education -->
 
+    <div id="experience">
+        <h2 class="heading">Experience</h2>
+        <div id="experience-timeline">
+            <div data-date="September 2022 - December 2022">
+                <h3>Intact Financial Corporation</h3>
+                <h4>CI/CD Software Developer Intern</h4>
+                <p>
+                    As a Software Developer Intern at Intact, I troubleshooted and resolved issues in pipelines,
+                    services, and the company's tools. Collaborating with senior team members, I automated processes
+                    using pipelines and Git, implemented job scheduling, automated testing, and developed a failure
+                    alert system. Notably, I migrated services from Log4j to Logback, optimized Github roles, and
+                    maintained thorough documentation in adherence to company standards.
+                </p>
+            </div>
+            
+            <div data-date="May 2022 – August 2022">
+                <h3>Brookfield Renewable Partners L.P.</h3>
+                <h4>Application Support Intern</h4>
+                <p>
+                    Interning at Brookfield Renewable, I expertly handled user accounts for tools like D365 and
+                    MediusFlow, employing PL/SQL scripts for database recovery. This in-office role acclimated me to
+                    corporate workflows, enhancing both my technical and professional skills.
+                </p>
+            </div>
+
+            <div data-date="May 2021 – November 2021">
+                <h3>Élections Québec</h3>
+                <h4>I.T. Technician</h4>
+                <p>
+                    As an I.T. Technician at Élections Québec, I excelled in repairing and maintaining computer
+                    hardware. My role involved delivering top-notch customer service through platforms such as Cisco
+                    Finesse, MS Teams, and Outlook. Utilizing tools like Azure Active Directory, Microsoft SCCM, and
+                    Octopus ITSM, I adeptly addressed user concerns and contributed to the efficient resolution of
+                    technical issues.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- End #experience -->
+
     <div id="projects" class="background-alt">
         <h2 class="heading">Projects</h2>
         <div class="container">
             <div class="row">
+
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/ATtiny85.png" style="width: 261px;height: 261px;" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>I2C-tiny-USB</h3>
+                        <p>
+                            Hardware project to provide a generic I2C interface. The ATTINY85 is used to convert the I2C data and send it to your PC via USB. The USB port is then read by a Python script.
+                        </p>
+                        <p><b style="color:tomato">Currently in testing</b></p>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/rust.png" style="width: 261px;height: 261px;" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>URL shortener service implemented with Rust and Warp</h3>
+                        <p>
+                            Service which provides the ability to create new shortened URLs and use them to redirect the user to the original URL. Frontend is still being worked on.
+                        </p>
+                        <p><b style="color:tomato">Currently in development</b></p>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+
+
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/3d_view_PCB_TCF.png" style="width: 261px;height: 261px;" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>IoT Temperature Based Fan Speed Controller</h3>
+                        <p>
+                            Using the ESP8266 NodeMCU for data processing and Blynk app for data obversation, a
+                            temperature sensor is used to control the speed of a 12V fan.
+                        </p>
+                        <p><b style="color:tomato">Work in Progress</b></p>
+                        <a href="https://github.com/LudoProvost/IoT-temp-based-fan-speed-controller">View Project Repo</a>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+
                 <div class="project shadow-large">
                     <div class="project-image">
                         <img src="images/peppers_encrypt.gif" />
@@ -149,7 +212,8 @@
                     <div class="project-info">
                         <h3>Sudoku Matrix Encryption/Decryption Algorithm</h3>
                         <p>
-                            Lossless image encryption and decryption algorithms. This project was done in Python and heavily inspired by the paper by Yue Wu et al. cited in the reference section of the README.
+                            Lossless image encryption and decryption algorithms. This project was done in Python and
+                            heavily inspired by the paper by Yue Wu et al. cited in the reference section of the README.
                         </p>
                         <a href="https://github.com/LudoProvost/sudoku-matrix-encryption">View Project Repo</a>
                     </div>
@@ -159,31 +223,19 @@
 
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/gradcircle.png" style="width: 261px;height:  261px;"/>
+                        <img src="images/gradcircle.png" style="width: 261px;height:  261px;" />
                     </div>
                     <!-- End .project-image -->
                     <div class="project-info">
                         <h3>VGA Controller and Basic Shape Rendering</h3>
                         <p>
-                            In this project, I made a VGA controller in Verilog using the VGA controller references by Altium. Since I did not have the ressources to test this on an FPGA, I used the $fwrite() command in Verilog to produce basic images in PPM format. A Python scrypt was made to then open the PPM file as a PNG.
+                            In this project, I made a VGA controller in Verilog using the VGA controller references by
+                            Altium. Since I did not have the ressources to test this on an FPGA, I used the $fwrite()
+                            command in Verilog to produce basic images in PPM format. A Python scrypt was made to then
+                            open the PPM file as a PNG.
                         </p>
-                        <a href="https://github.com/LudoProvost/VGA-controller-basic-shape-rendering">View Project Repo</a>
-                    </div>
-                    <!-- End .project-info -->
-                </div>
-                <!-- End .project -->
-            
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/system_diagram_UART_TLC.png" style="width: 300px;height: 261px;"/>
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>UART Design for Traffic Light Controller</h3>
-                        <p>
-                            In this project, a UART was designed in structural VHDL to allow for a traffic light controller to communicate debug messages through a serial port. A full project report which includes schematics, waveforms and more is available in the project repo.
-                        </p>
-                        <a href="https://github.com/LudoProvost/CEG3155/tree/main/Project%20-%20UART%20design">View Project Repo</a>
+                        <a href="https://github.com/LudoProvost/VGA-controller-basic-shape-rendering">View Project
+                            Repo</a>
                     </div>
                     <!-- End .project-info -->
                 </div>
@@ -191,13 +243,35 @@
 
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/led_matrix.png" style="width: 261px;height: 261px;"/>
+                        <img src="images/system_diagram_UART_TLC.png" style="width: 300px;height: 261px;" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>UART Design for Traffic Light Controller</h3>
+                        <p>
+                            In this project, a UART was designed in structural VHDL to allow for a traffic light
+                            controller to communicate debug messages through a serial port. A full project report which
+                            includes schematics, waveforms and more is available in the project repo.
+                        </p>
+                        <a href="https://github.com/LudoProvost/CEG3155/tree/main/Project%20-%20UART%20design">View
+                            Project Repo</a>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/led_matrix.png" style="width: 261px;height: 261px;" />
                     </div>
                     <!-- End .project-image -->
                     <div class="project-info">
                         <h3>LED Matrix Design</h3>
                         <p>
-                            The first step of this project was to create the schematic including the circuit protection, voltage regulation, and the LED matrix. Next, custom footprints had to be designed in Fusion360 for the LMS78 and the barrel jack connector. KiCad's PCB editor was used to design the PCB.
+                            The first step of this project was to create the schematic including the circuit protection,
+                            voltage regulation, and the LED matrix. Next, custom footprints had to be designed in
+                            Fusion360 for the LMS78 and the barrel jack connector. KiCad's PCB editor was used to design
+                            the PCB.
                         </p>
                         <a href="https://github.com/LudoProvost/LED-matrix">View Project Repo</a>
                     </div>
@@ -207,14 +281,17 @@
 
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/chladni_pattern.gif" style="width: 261px;height: 261px;"/>
+                        <img src="images/chladni_pattern.gif" style="width: 261px;height: 261px;" />
                     </div>
                     <!-- End .project-image -->
                     <div class="project-info">
                         <h3>Chladni Pattern Generator</h3>
                         <p>
-                            This is an algorithm that was done quickly and just for fun, the code is extremely messy. The goal was to generate Chladni pattern in 2 different ways: continuously on a PySimpleGUI window with as many FPS as possible, and as a short high-quality GIF.
-                            The overall goal was to produce visually appealing short animations and give myself an optimization challenge to see the maximum FPS I could reach
+                            This is an algorithm that was done quickly and just for fun, the code is extremely messy.
+                            The goal was to generate Chladni pattern in 2 different ways: continuously on a PySimpleGUI
+                            window with as many FPS as possible, and as a short high-quality GIF.
+                            The overall goal was to produce visually appealing short animations and give myself an
+                            optimization challenge to see the maximum FPS I could reach
                         </p>
                         <a href="https://github.com/LudoProvost/chladni-pattern-generator">View Project Repo</a>
                     </div>
@@ -224,7 +301,7 @@
 
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/others.png" style="width: 261px;height: 261px;"/>
+                        <img src="images/others.png" style="width: 261px;height: 261px;" />
                     </div>
                     <!-- End .project-image -->
                     <div class="project-info">
@@ -304,13 +381,15 @@
                 <div class="col-sm-5 social">
                     <ul>
                         <li>
-                            <a href="https://github.com/LudoProvost/" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                            <a href="https://github.com/LudoProvost/" target="_blank"><i class="fa fa-github"
+                                    aria-hidden="true"></i></a>
                         </li>
                         <!-- <li>
                             <a href="https://stackoverflow.com/" target="_blank"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a>
                         </li> -->
                         <li>
-                            <a href="https://linkedin.com/in/ludovic-provost-919132211/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="https://linkedin.com/in/ludovic-provost-919132211/" target="_blank"><i
+                                    class="fa fa-linkedin" aria-hidden="true"></i></a>
                         </li>
                         <!-- <li>
                             <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
