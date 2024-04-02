@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I2C to USB Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Light gray background */
+            margin: 0;
+            padding: 0;
+        }
+
+        .section {
+            padding: 20px;
+            margin-bottom: 10px;
+            background-color: #e0e0e0;
+            /* Alternate background color */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section:nth-child(even) {
+            background-color: #d0d0d0;
+            /* Alternate dark gray background color */
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subheading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .subheading2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .section timeline {
+            max-width: 100%;
+            display: block;
+            margin: auto;
+        }
+
+        /* Add more styles as needed */
+        @mixin tablet-and-up {
+            @media screen and (min-width: 769px) {
+                @content;
+            }
+        }
+
+        @mixin mobile-and-up {
+            @media screen and (min-width: 601px) {
+                @content;
+            }
+        }
+
+        @mixin tablet-and-down {
+            @media screen and (max-width: 768px) {
+                @content;
+            }
+        }
+
+        @mixin mobile-only {
+            @media screen and (max-width: 600px) {
+                @content;
+            }
+        }
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1rem;
+            background: linear-gradient(45deg, #209cff, #3498db);
+            padding: 3rem 0;
+        }
+
+        .wrapper {
+            background: #eaf6ff;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        h1 {
+            font-size: 1.1rem;
+            font-family: sans-serif;
+        }
+
+        .sessions {
+            margin-top: 2rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        #timeline li {
+            padding-bottom: 1.5rem;
+            border-left: 1px solid #3498db;
+            position: relative;
+            padding-left: 20px;
+            margin-left: 10px;
+
+            &:last-child {
+                border: 0px;
+                padding-bottom: 0;
+            }
+
+            &:before {
+                content: '';
+                width: 15px;
+                height: 15px;
+                background: white;
+                border: 1px solid #3498db;
+                box-shadow: 3px 3px 0px #3498db;
+                box-shadow: 3px 3px 0px #3498db;
+                border-radius: 50%;
+                position: absolute;
+                left: -10px;
+                top: 0px;
+            }
+        }
+
+        .time {
+            color: #2a2839;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+
+            @include mobile-and-up {
+                font-size: .9rem;
+            }
+
+            @include mobile-only {
+                margin-bottom: .3rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        p {
+            color: #4f4f4f;
+            font-family: sans-serif;
+            line-height: 1.5;
+            margin-top: 0.4rem;
+
+            @include mobile-only {
+                font-size: .9rem;
+            }
+        }
+
+        #tools ul {
+            display: block;
+            margin: 0;
+            padding: 0;
+            max-width: 2000px
+        }
+
+        #tools li {
+            display: inline-block;
+            margin: 7px;
+            padding: 5px 10px;
+            color: #374054;
+            background: #e4e4ea;
+            list-style: none;
+            cursor: default;
+            font-size: 1.2em
+        }
+    </style>
+    <!-- <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ludovic Provost's Portfolio</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <div class="section">
+        <h1 class="section-title">I2C to USB Interface</h1>
+    </div>
+    <!-- Section 1 -->
+    <div class="section">
+        <h2 class="section-title">Goals</h2>
+        <p>
+            The main goal of this project was to write firmware for the ATtiny85 to be able to provide an interface for
+            I2C device to your PC by USB. The idea was for the firmware to read data from a device on an I2C bus, then
+            sending it over USB to your PC. Without having dedicated USB hardware, V-USB would be used to send USB data
+            at low-speed.
+        </p>
+        <p>
+            In the goal to challenge myself, I attempted to do this using an embedded rust library. Sadly, due to the
+            incomplete and <b>undocumented*</b> HAL provided by the library (avr-hal), my plans changed to using the
+            STM32F103 for interfacing I2C and USB.
+        </p>
+        <p>
+            *Though the avr-hal library <b>is</b> documented, I found out during testing that the documentation was old
+            and did not match the functionalities provided.
+        </p>
+        <!-- <h3 class="subheading">Heading 1</h3>
+        <p>Your text goes here...</p>
+        <h3 class="subheading">Heading 2</h3>
+        <p>Your text goes here...</p>
+        <h3 class="subheading">Heading 3</h3>
+        <p>Your text goes here...</p>
+        <img src="image1.jpg" alt="Image 1">
+        <img src="image2.jpg" alt="Image 2"> -->
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section">
+        <div id="tools">
+            <h2 class="section-title">Tools Used</h2>
+            <h3 class="subheading"> Software/Languages: </h3>
+            <ul>
+                <li>STM32CubeIDE</li>
+                <li>STM32CubeProgrammer</li>
+                <li>Hercules Port Reader</li>
+                <li>C</li>
+                <li>Logic 2</li>
+                <li><a href="https://github.com/Rahix/avr-hal" style=" color: inherit;">avr-hal</a></li>
+                <li>avrdude</li>
+                <li>avr-gcc</li>
+                <li>WSL</li>
+            </ul>
+            <h3 class="subheading"> Hardware: </h3>
+            <ul>
+                <li>ATtiny85</li>
+                <li>STM32f103 (Bluepill)</li>
+                <li>Logic Analyzer</li>
+                <li>ST-LINK V2</li>
+                <li>Arduino Uno*</li>
+            </ul>
+        </div>
+        <p></p>
+        <p>
+            *The Arduino Uno was used as an ISP AVR programmer to flash the ATtiny85.
+        </p>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section">
+        <h2 class="section-title">Project Timeline</h2>
+        <p>
+            After doing research and establishing a schedule for the project, these were the milestones/highlights of
+            the project.
+        </p>
+        <div id="timeline">
+            <ul class="sessions">
+
+                <li>
+                    <h2 class="subheading2">Successfully tested I2C communication on the ATtiny85 using the C language.
+                    </h2>
+                    <p>
+                        Setting up the ATtiny85 as the I2C master and connecting an Arduino Uno to the bus as a slave, I
+                        tested the transfer of data by having the slave send data over the bus and having the master
+                        confirm it was the right data.
+                    </p>
+                </li>
+                <li>
+                    <h2 class="subheading2">Successfully tested V-USB using the ATtiny85</h2>
+                    <p>
+                        V-USB is known as being challenging and flimsy. The first challenge was getting the proper clock
+                        frequency for the ATtiny85. Since I did not have a crystal oscillator,
+                        I related on the internal clock, which I set to run at 12 MHz using the fuse bits, which is the
+                        lowest clock frquency to allow V-USB to work. The 3.6V zeiner diodes connected to the data lines
+                        proved to be crucial for this to work. The circuit used can be seen below.
+                    </p>
+                    <p><b>V-USB circuit:</b></p>
+                    <img src="images/i2c-usb-interface/v-usb_setup_circuit.png"
+                        style="width: 900px;height: 420px;" />
+                </li>
+                <li>
+                    <!-- <div class="time">Step 3</div> -->
+                    <h2 class="subheading2">Attempted avr-hal implementation of I2C communications</h2>
+                    <p>
+                        Using WSL, I create a rust project and was able to use the avr-hal library to test simple
+                        functionalities such as register read/write operations, changes to pin modes, etc. I encountered
+                        a major road block
+                        when trying to use I2C. I was able to do some register-level I2C implementation such as
+                        <b>detecting start conditions</b>, but due to a lack of support from the library, I2C bitbanging
+                        would have been required. Due to
+                        the complexity of bitbanging, paired with the fact that the library's documentation was not
+                        reliable, I decided not to move forward with this idea.
+                    </p>
+                    <p><b>USISIF bit detect (very basic):</b></p>
+                    <img src="images/i2c-usb-interface/usisif_detect.png"
+                        style="width: 600px;height: 500px;" />
+                </li>
+                <li>
+                    <h2 class="subheading2">Switch to STM32F103 (Bluepill)</h2>
+                    <p>
+                        I decided to continue the project with an STM32 MCU as it provides a better usb interface and an
+                        I2C HAL that is a lot more documented. The pinout was easily setup in STM32CubeIDE
+                        and the clock settings were set by following the provided documentation. I used the external
+                        oscillator (8MHz) of the bluepill board.
+                    </p>
+                    <p><b>Clock Settings:</b></p>
+                    <img src="images/i2c-usb-interface/stm32f103_clock_settings.png"
+                        style="width: 800px;height: 400px;" />
+                    <p><b>Pinout Configuration:</b></p>
+                    <img src="images/i2c-usb-interface/stm32_f103_pinout_config.png"
+                        style="width: 400px;height: 350px;" />
+                </li>
+                <li>
+                    <h2 class="subheading2">Successfully tested USB connection with STM32f103</h2>
+                    <p>
+                        I was able to successfully connect my STM32F103 to my PC using the DP and DM pins of the
+                        STM32f103. I used the Hercules utility to monitor the COM port as can be seen below.
+                    </p>
+                    <p><b>Hercules COM port reading:</b></p>
+                    <img src="images/i2c-usb-interface/successful_usb_connection.png"
+                        style="width: 400px;height: 350px;" />
+                </li>
+                <li>
+                    <h2 class="subheading2">Failed to have a successful I2C connection with STM32f103</h2>
+                    <p>‍
+                        For the I2C bus circuit, I followed the diagram on page 69 of the stm32f103c8 datasheet. The I2C
+                        bus was thoroughly debugged for a long time, because although the MCU was able to write to the
+                        bus, it was never able to successfully detect an ACK. Many different solutions were tried,
+                        but the problem seems to be with the HAL of the MCU. When performing an I2C bus scan (7 bit
+                        addresses), the MCU would always end the packet with a start condition, which seemed to cause
+                        problems.
+                    </p>
+                    <p><b>Logic Analyzer waveform:</b></p>
+                    <img src="images/i2c-usb-interface/failed_i2c_waveform.png" style="width: 1100px;height: 270px;" />
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="section">
+        <h2 class="section-title">Wrap-up</h2>
+        <p>
+            Although the project was left unfinished, I acknowledge the experience I gained, which includes:
+        </p>
+        <h2 class="subheading2">- I2C Protocol</h2>
+        <h2 class="subheading2">- USB Protocol</h2>
+        <h2 class="subheading2">- Embedded Rust</h2>
+        <h2 class="subheading2">- STM32 Development Process</h2>
+        <h2 class="subheading2">- AVR RISC-based microcontroller</h2>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="section">
+        <h2 class="section-title">Sources and Datasheets</h2>
+        <ul>
+            <li><a href="https://ww1.microchip.com/downloads/en/devicedoc/atmel-2586-avr-8-bit-microcontroller-attiny25-attiny45-attiny85_datasheet.pdf">
+                    ATtiny85 Datasheet</a></li>
+            <li><a href="https://github.com/Rahix/avr-hal">avr-hal library</a></li>
+            <li><a href="https://www.st.com/resource/en/datasheet/stm32f103c8.pdf">stm32f103c8 Datasheet</a></li>
+            <li><a href="https://www.st.com/resource/en/user_manual/um1850-description-of-stm32f1-hal-and-lowlayer-drivers-stmicroelectronics.pdf">stm32f1
+                    HAL drivers User manual</a></li>
+            <li><a href="https://www.obdev.at/products/vusb/index.html">V-USB Product Page</a></li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
