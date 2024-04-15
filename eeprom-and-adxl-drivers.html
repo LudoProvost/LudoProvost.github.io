@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEPROM and Accelerometer Drivers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Light gray background */
+            margin: 0;
+            padding: 0;
+        }
+
+        .section {
+            padding: 20px;
+            margin-bottom: 10px;
+            background-color: #e0e0e0;
+            /* Alternate background color */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section:nth-child(even) {
+            background-color: #d0d0d0;
+            /* Alternate dark gray background color */
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subheading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .subheading2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .section timeline {
+            max-width: 100%;
+            display: block;
+            margin: auto;
+        }
+
+        /* Add more styles as needed */
+        @mixin tablet-and-up {
+            @media screen and (min-width: 769px) {
+                @content;
+            }
+        }
+
+        @mixin mobile-and-up {
+            @media screen and (min-width: 601px) {
+                @content;
+            }
+        }
+
+        @mixin tablet-and-down {
+            @media screen and (max-width: 768px) {
+                @content;
+            }
+        }
+
+        @mixin mobile-only {
+            @media screen and (max-width: 600px) {
+                @content;
+            }
+        }
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1rem;
+            background: linear-gradient(45deg, #209cff, #3498db);
+            padding: 3rem 0;
+        }
+
+        .wrapper {
+            background: #eaf6ff;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        h1 {
+            font-size: 1.1rem;
+            font-family: sans-serif;
+        }
+
+        .sessions {
+            margin-top: 2rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        #timeline li {
+            padding-bottom: 1.5rem;
+            border-left: 1px solid #3498db;
+            position: relative;
+            padding-left: 20px;
+            margin-left: 10px;
+
+            &:last-child {
+                border: 0px;
+                padding-bottom: 0;
+            }
+
+            &:before {
+                content: '';
+                width: 15px;
+                height: 15px;
+                background: white;
+                border: 1px solid #3498db;
+                box-shadow: 3px 3px 0px #3498db;
+                box-shadow: 3px 3px 0px #3498db;
+                border-radius: 50%;
+                position: absolute;
+                left: -10px;
+                top: 0px;
+            }
+        }
+
+        .time {
+            color: #2a2839;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+
+            @include mobile-and-up {
+                font-size: .9rem;
+            }
+
+            @include mobile-only {
+                margin-bottom: .3rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        p {
+            color: #4f4f4f;
+            font-family: sans-serif;
+            line-height: 1.5;
+            margin-top: 0.4rem;
+
+            @include mobile-only {
+                font-size: .9rem;
+            }
+        }
+
+        #tools ul {
+            display: block;
+            margin: 0;
+            padding: 0;
+            max-width: 2000px
+        }
+
+        #tools li {
+            display: inline-block;
+            margin: 7px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #2b2f3a;
+            background: #e4e4ea;
+            list-style: none;
+            cursor: default;
+            font-size: 1.2em
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="section">
+        <h1 class="section-title">EEPROM and Accelerometer Drivers</h1>
+
+        <p><a href="https://github.com/LudoProvost/eeprom-and-adxl345-drivers">View Github Repo</a></p>
+    </div>
+    
+    <div class="section">
+        <div id="tools">
+            <h2 class="section-title">Tools Used</h2>
+            <h3 class="subheading"> Software/Languages: </h3>
+            <ul>
+                <li>STM32CubeIDE</li>
+                <li>Hercules Port Reader</li>
+                <li>C</li>
+                <li>Logic 2</li>
+            </ul>
+            <h3 class="subheading"> Hardware/protocols: </h3>
+            <ul>
+                <li>STM32f303</li>
+                <li>Logic Analyzer</li>
+                <li>ST-LINK V2</li>
+                <li>UART</li>
+                <li>SPI</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="subheading">EEPROM Driver</h2>
+        <p>
+            The EEPROM driver offers byte read, byte write and page write functions as well as functions to access and modify the status register for things 
+            like array protection and WIP or WEL flags. It communicates via SPI.
+        </p>
+        
+        <h2 class="subheading2">Successful SPI read/write:</h2>
+        <img src="images/eeprom-and-adxl-drivers/eeprom-data.png" style="width: 400px;height: 520px;" />
+        <img src="images/eeprom-and-adxl-drivers/eeprom-waveform.png" style="width: 1200px;height: 420px;" />
+
+    </div>
+
+    <div class="section">
+        <h2 class="subheading">ADXL345 Accelerometer Driver</h2>
+        <p>
+            The ADXL345 driver offers low-level functions and seperate functions to retrieve the accelerometer data (either raw or in mps^2). 
+            The initialisation makes sure the settings of the device are set properly. 
+            This device also communicates via SPI but also via an INTERRUPT pin which is raised when data is ready.
+        </p>
+        
+        <h2 class="subheading2">Successful SPI comm:</h2>
+        <img src="images/eeprom-and-adxl-drivers/adxl-readacc-data.png" style="width: 400px;height: 590px;" />
+        <img src="images/eeprom-and-adxl-drivers/adxl-readacc-waveform.png" style="width: 1200px;height: 420px;" />
+
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Sources and Datasheets</h2>
+        <ul>
+            <li><a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf">ADXL345 Datasheet</a></li>
+            <li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/21827H.pdf">25AA040A EEPROM Datasheet</a></li>
+            <li><a href="https://www.st.com/resource/en/datasheet/stm32f302cb.pdf">STM32F302R8 Datasheet</a></li>
+            <li><a href="https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf">STM32F302R8 User Manual</a></li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>

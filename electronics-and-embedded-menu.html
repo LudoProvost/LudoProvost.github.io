@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Systems & Electronics Projects Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Light gray background */
+            margin: 0;
+            padding: 0;
+        }
+
+        .section {
+            padding: 20px;
+            margin-bottom: 10px;
+            background-color: #e0e0e0;
+            /* Alternate background color */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-image {
+            float: right
+        }   
+
+        .section:nth-child(even) {
+            background-color: #d0d0d0;
+            /* Alternate dark gray background color */
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subheading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .subheading2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .section timeline {
+            max-width: 100%;
+            display: block;
+            margin: auto;
+        }
+
+        /* Add more styles as needed */
+        @mixin tablet-and-up {
+            @media screen and (min-width: 769px) {
+                @content;
+            }
+        }
+
+        @mixin mobile-and-up {
+            @media screen and (min-width: 601px) {
+                @content;
+            }
+        }
+
+        @mixin tablet-and-down {
+            @media screen and (max-width: 768px) {
+                @content;
+            }
+        }
+
+        @mixin mobile-only {
+            @media screen and (max-width: 600px) {
+                @content;
+            }
+        }
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1rem;
+            background: linear-gradient(45deg, #209cff, #3498db);
+            padding: 3rem 0;
+        }
+
+        .wrapper {
+            background: #eaf6ff;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        h1 {
+            font-size: 1.1rem;
+            font-family: sans-serif;
+        }
+
+        .sessions {
+            margin-top: 2rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        #timeline li {
+            padding-bottom: 1.5rem;
+            border-left: 1px solid #3498db;
+            position: relative;
+            padding-left: 20px;
+            margin-left: 10px;
+
+            &:last-child {
+                border: 0px;
+                padding-bottom: 0;
+            }
+
+            &:before {
+                content: '';
+                width: 15px;
+                height: 15px;
+                background: white;
+                border: 1px solid #3498db;
+                box-shadow: 3px 3px 0px #3498db;
+                box-shadow: 3px 3px 0px #3498db;
+                border-radius: 50%;
+                position: absolute;
+                left: -10px;
+                top: 0px;
+            }
+        }
+
+        .time {
+            color: #2a2839;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+
+            @include mobile-and-up {
+                font-size: .9rem;
+            }
+
+            @include mobile-only {
+                margin-bottom: .3rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        p {
+            color: #4f4f4f;
+            font-family: sans-serif;
+            line-height: 1.5;
+            margin-top: 0.4rem;
+
+            @include mobile-only {
+                font-size: .9rem;
+            }
+        }
+
+        #tools ul {
+            display: block;
+            margin: 0;
+            padding: 0;
+            max-width: 2000px
+        }
+
+        #tools li {
+            display: inline-block;
+            margin: 7px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #2b2f3a;
+            background: #e4e4ea;
+            list-style: none;
+            cursor: default;
+            font-size: 1.1em
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Section 1 -->
+    <div class="section">
+        <h1 class="section-title">Embedded Systems & Electronics Projects Menu</h1>
+    </div>
+
+    <!-- project START -->
+    <div class="section">
+        <h2 class="subheading">EEPROM and Accelerometer Drivers</h2>
+
+        <div id="tools">
+            <ul>
+                <li>STM32CubeIDE</li>
+                <li>Hercules Port Reader</li>
+                <li>C</li>
+                <li>Logic 2</li>
+                <li>SPI</li>
+                <li>UART</li>
+                <li>EEPROM</li>
+            </ul>
+        </div>
+        
+        <h2 class="subheading2">Project Description</h2>
+        <p>
+            I wrote drivers for the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/21827H.pdf">25AA040A EEPROM IC</a> and the <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf">ADXL345 triple axis accelerometer</a>.
+        </p>
+
+        <p>
+            <b>More information about this project can be found <a href="eeprom-and-adxl-drivers.html">here</a>.</b>
+        </p>
+
+        <p><a href="https://github.com/Rahix/avr-hal">View Github Repo</a></p>
+
+    </div>
+
+    <!-- project START -->
+    <div class="section">
+        <h2 class="subheading">I2C to USB Interface</h2>
+
+        <div id="tools">
+            <ul>
+                <li>STM32CubeIDE</li>
+                <li>ATtiny85</li>
+                <li>C</li>
+                <li>Logic 2</li>
+                <li>I2C</li>
+                <li>USB</li>
+                <li>WSL</li>
+            </ul>
+        </div>
+
+        <p>
+            <b>More information about this project can be found <a href="i2c-usb-interface.html">here</a>.</b>
+        </p>
+
+    </div>
+
+
+    <!-- project START -->
+    <div class="section">
+        <h2 class="subheading">UART Design for Traffic Light Controller</h2>
+        
+        <div id="tools">
+            <ul>
+                <li>Vivado</li>
+                <li>FPGA</li>
+                <li>UART</li>
+            </ul>
+        </div>
+        
+        <p>
+            In this project, a UART was designed in structural VHDL to allow for a traffic light controller to communicate debug messages through a serial port. 
+            A full project report which includes schematics, waveforms and more is available in the project repo.
+        </p>
+
+        <p><a href="https://github.com/LudoProvost/CEG3155">View Github Repo</a></p>
+    </div>
+
+    <!-- project START -->
+    <div class="section">
+        <h2 class="subheading">Verilog VGA Controller</h2>
+                
+        <div id="tools">
+            <ul>
+                <li>Vivado</li>
+                <li>FPGA</li>
+                <li>VGA</li>
+            </ul>
+        </div>
+        
+        <p>
+            In this project, I made a VGA controller in Verilog using the VGA controller references by Altium. 
+            Since I did not have the ressources to test this on an FPGA, I used the $fwrite() command in Verilog to produce basic images in PPM format. 
+            A Python scrypt was made to then open the PPM file as a PNG.
+        </p>
+
+        <p><a href="https://github.com/LudoProvost/VGA-controller-basic-shape-rendering">View Github Repo</a></p>
+
+    </div>
+
+    <!-- project START -->
+    <div class="section">
+        <h2 class="subheading">LED Matrix PCB Design</h2>
+       
+        <div id="tools">
+            <ul>
+                <li>KiCad</li>
+                <li>Fusion360</li>
+                <li>WS2812B</li>
+            </ul>
+        </div>
+        
+        <p>
+            The first step of this project was to create the schematic including the circuit protection, voltage regulation, and the LED matrix. 
+            Next, custom footprints had to be designed in Fusion360 for the LMS78 and the barrel jack connector. KiCad's PCB editor was used to design the PCB.
+        </p>
+
+        <p><a href="https://github.com/LudoProvost/LED-matrix">View Github Repo</a></p>
+    </div>
+
+    <!-- project START -->
+    <div class="section">
+        <h2 class="subheading">IoT Temperature Based Fan Speed Controller</h2>
+
+        <div id="tools">
+            <ul>
+                <li>KiCad</li>
+            </ul>
+        </div>
+        
+        <p>
+            The first step of this project was to create the schematic including the circuit protection, voltage regulation, and the LED matrix. 
+            Next, custom footprints had to be designed in Fusion360 for the LMS78 and the barrel jack connector. KiCad's PCB editor was used to design the PCB.
+        </p>
+
+        <p><a href="https://github.com/LudoProvost/IoT-temp-based-fan-speed-controller">View Github Repo</a></p>
+    </div>
+
+
+</body>
+
+</html>
