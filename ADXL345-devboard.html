@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADXL345 Development Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Light gray background */
+            margin: 0;
+            padding: 0;
+        }
+
+        .section {
+            padding: 20px;
+            margin-bottom: 10px;
+            background-color: #e0e0e0;
+            /* Alternate background color */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section:nth-child(even) {
+            background-color: #d0d0d0;
+            /* Alternate dark gray background color */
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subheading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .subheading2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .section timeline {
+            max-width: 100%;
+            display: block;
+            margin: auto;
+        }
+
+        /* Add more styles as needed */
+        @mixin tablet-and-up {
+            @media screen and (min-width: 769px) {
+                @content;
+            }
+        }
+
+        @mixin mobile-and-up {
+            @media screen and (min-width: 601px) {
+                @content;
+            }
+        }
+
+        @mixin tablet-and-down {
+            @media screen and (max-width: 768px) {
+                @content;
+            }
+        }
+
+        @mixin mobile-only {
+            @media screen and (max-width: 600px) {
+                @content;
+            }
+        }
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1rem;
+            background: linear-gradient(45deg, #209cff, #3498db);
+            padding: 3rem 0;
+        }
+
+        .wrapper {
+            background: #eaf6ff;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        h1 {
+            font-size: 1.1rem;
+            font-family: sans-serif;
+        }
+
+        .sessions {
+            margin-top: 2rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        #timeline li {
+            padding-bottom: 1.5rem;
+            border-left: 1px solid #3498db;
+            position: relative;
+            padding-left: 20px;
+            margin-left: 10px;
+
+            &:last-child {
+                border: 0px;
+                padding-bottom: 0;
+            }
+
+            &:before {
+                content: '';
+                width: 15px;
+                height: 15px;
+                background: white;
+                border: 1px solid #3498db;
+                box-shadow: 3px 3px 0px #3498db;
+                box-shadow: 3px 3px 0px #3498db;
+                border-radius: 50%;
+                position: absolute;
+                left: -10px;
+                top: 0px;
+            }
+        }
+
+        .time {
+            color: #2a2839;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+
+            @include mobile-and-up {
+                font-size: .9rem;
+            }
+
+            @include mobile-only {
+                margin-bottom: .3rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        p {
+            color: #4f4f4f;
+            font-family: sans-serif;
+            line-height: 1.5;
+            margin-top: 0.4rem;
+
+            @include mobile-only {
+                font-size: .9rem;
+            }
+        }
+
+        #tools ul {
+            display: block;
+            margin: 0;
+            padding: 0;
+            max-width: 2000px
+        }
+
+        #tools li {
+            display: inline-block;
+            margin: 7px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #2b2f3a;
+            background: #e4e4ea;
+            list-style: none;
+            cursor: default;
+            font-size: 1.2em
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="section">
+        <h1 class="section-title">ADXL345 Development Board</h1>
+
+        <p><a href="https://github.com/LudoProvost/adxl345-dev-board">View Github Repo</a></p>
+    </div>
+    
+    <div class="section">
+        <div id="tools">
+            <h2 class="section-title">Tools Used</h2>
+            <h3 class="subheading"> Software/Languages: </h3>
+            <ul>
+                <li>KiCad</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="subheading">Schematic</h2>
+        <p>
+            The schematic is divided into 2 parts: the pin header and the accelerometer IC. There are communication series resistors on the input/output lines. The accelerometer
+            Has power supply decoupling capacitors as well as a decoupling series resistor as advised in the datasheet.
+        </p>
+        
+        <h2 class="subheading2">Pin Header:</h2>
+        <img src="images/adxl345-devboard/pinheader_sch.png" style="width: 765px;height: 440px;" />
+        
+        <h2 class="subheading2">Accelerometer:</h2>
+        <img src="images/adxl345-devboard/accelerometer_sch.png" style="width: 830px;height: 500px;" />
+    </div>
+
+    <div class="section">
+        <h2 class="subheading">Custom Footprint</h2>
+        <p>
+            A custom footprint was required for the ADXL345. This was done by following the measurements given in the recommended printed wiring board section of the datasheet (p.35).
+        </p>
+        
+        <h2 class="subheading2">ADXL345:</h2>
+        <img src="images/adxl345-devboard/adxl345_footprint.png" style="width: 450px;height: 530px;" />
+        <img src="images/adxl345-devboard/adxl345_measurements.png" style="width: 450px;height: 530px;" />
+
+    </div>
+
+    <div class="section">
+        <h2 class="subheading">PCB:</h2>
+        <p>
+            The design goals were to create a <b>functional</b>, <b>testable</b> and <b>small</b> development board. It is intended to 
+            be soldered with male pin headers and offers a silkscreen drawing for reference to the direction of axes.
+        </p>
+        
+        <h2 class="subheading2">PCB Editor view:</h2>
+        <img src="images/adxl345-devboard/adxl345_pcb.png" style="width: 550px;height: 665px;" />
+
+        <h2 class="subheading2">3D viewer:</h2>
+        <img src="images/adxl345-devboard/adxl345_3d.png" style="width: 580px;height: 500px;" />
+
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Sources and Datasheets</h2>
+        <ul>
+            <li><a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf">ADXL345 Datasheet</a></li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
